@@ -36,22 +36,24 @@ def add_shift(employee, day):
 	if employee not in shifts:
 		shifts.update({employee:day})
 	else:
-		print("User alrwady Exist")
+		for days in day:
+			if days not in shifts[employee]:
+				shifts[employee].append(days)
 	return shifts
 
-print(add_shift("Alice", ["tuesday", "wednesday", "friday"]))
+#print(add_shift("Alice", ["Tuesday", "Wednesday", "Friday"]))
 	
+
+def get_schedule(day):
+	shift = {}
+	for employee, days in shifts.items():
+		if day in days:
+			shift.update({employee:days})
+	else:
+		print(f"no employee is working on {day}")
+	return shift
+print(get_schedule("Sunday"))
 		
-
-
-
-
-
-
-
-
-
-
 
 
 
